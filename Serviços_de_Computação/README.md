@@ -73,7 +73,6 @@ Características:
 
 Indicado para dados temporários, caches e buffers.
 
-![EC2 Instance Store](./images/image.png)
 
 ### Amazon EBS — Elastic Block Store
 
@@ -128,10 +127,10 @@ Em um Security Group recém-criado:
 
 | Porta | Protocolo | Finalidade |
 |---|---|---|
-| 22 | SSH | Acesso remoto ao Linux |
+| 22 | SSH | Acesso remoto ao Linux/ enviar arquivos com segurança, via SSH |
 | 21 | FTP | Transferência de arquivos |
-| 80 | HTTP | Acesso a sites |
-| 443 | HTTPS | Acesso seguro a sites |
+| 80 | HTTP | Acesso a sites (s/ criptografia) |
+| 443 | HTTPS | Acesso seguro a sites (c/ criptografia) |
 | 3389 | RDP | Acesso remoto ao Windows |
 | 3306 | MySQL | Banco de dados MySQL |
 | 5432 | PostgreSQL | Banco de dados PostgreSQL |
@@ -143,7 +142,6 @@ Em um Security Group recém-criado:
 
 > Analogia: o Security Group é o porteiro da instância, com uma lista de quem pode entrar. Quem não está na lista não chega à porta.
 
-![Funcionamento dos Security Groups](./images/image-1.png)
 
 ---
 
@@ -151,28 +149,17 @@ Em um Security Group recém-criado:
 
 A AWS oferece diferentes modelos de contratação de instâncias, de acordo com a necessidade da aplicação.
 
-| Modelo | Característica | Indicação |
-|---|---|---|
-| On-Demand | Pagamento pelo uso, sem compromisso de longo prazo | Aplicações de curta duração ou imprevisíveis |
-| Reserved Instances | Desconto mediante compromisso de 1 ou 3 anos | Cargas previsíveis e contínuas |
-| Savings Plans | Compromisso de consumo em USD/hora por 1 ou 3 anos | Cargas contínuas com maior flexibilidade |
-| Spot Instances | Capacidade ociosa com descontos de até 90% | Processamentos tolerantes a interrupções |
-| Dedicated Hosts | Servidor físico dedicado ao cliente | Licenciamento e conformidade |
-| Dedicated Instances | Instâncias em hardware dedicado à conta | Isolamento físico |
-| Capacity Reservations | Reserva de capacidade em uma AZ específica | Garantia de capacidade computacional |
+![Opções de compra do EC2](./images/image-2.png)
+
+![Comparação dos modelos de compra](./images/image-3.png)
 
 ### Pontos importantes
-
 - **On-Demand:** não exige compromisso de longo prazo.
 - **Spot:** pode ser interrompida pela AWS quando a capacidade for necessária.
 - **Reserved Instances:** oferece desconto para cargas previsíveis.
 - **Savings Plans:** oferece descontos mediante compromisso de consumo.
 - **Capacity Reservations:** garante capacidade, mas não oferece desconto automaticamente.
-
-![Opções de compra do EC2](./images/image-2.png)
-
-![Comparação dos modelos de compra](./images/image-3.png)
-
+  
 ---
 
 ## 5. Modelo de Responsabilidade Compartilhada
