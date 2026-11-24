@@ -27,7 +27,7 @@ Ao criar uma instância, podemos definir:
 - Key Pair (chaves de acesso).
 - IAM Role.
 
-![Configuração de uma instância EC2](config_instancia_ec2.PNG)
+![Configuração de uma instância EC2](./images/config_instancia_ec2.PNG)
 
 ---
 
@@ -46,7 +46,7 @@ Características:
 
 Indicado para dados temporários, caches e buffers.
 
-![EC2 Instance Store](image.png)
+![EC2 Instance Store](./images/image.png)
 
 ### Amazon EBS — Elastic Block Store
 
@@ -116,7 +116,7 @@ Em um Security Group recém-criado:
 
 > Analogia: o Security Group é o porteiro da instância, com uma lista de quem pode entrar. Quem não está na lista não chega à porta.
 
-![Funcionamento dos Security Groups](image-1.png)
+![Funcionamento dos Security Groups](./images/image-1.png)
 
 ---
 
@@ -142,9 +142,9 @@ A AWS oferece diferentes modelos de contratação de instâncias, de acordo com 
 - **Savings Plans:** oferece descontos mediante compromisso de consumo.
 - **Capacity Reservations:** garante capacidade, mas não oferece desconto automaticamente.
 
-![Opções de compra do EC2](image-2.png)
+![Opções de compra do EC2](./images/image-2.png)
 
-![Comparação dos modelos de compra](image-3.png)
+![Comparação dos modelos de compra](./images/image-3.png)
 
 ---
 
@@ -290,4 +290,4 @@ Serviço responsável por ajustar automaticamente a quantidade de instâncias EC
 - [EC2 Auto Scaling](https://aws.amazon.com/ec2/autoscaling/)
 - [Modelo de Responsabilidade Compartilhada](https://aws.amazon.com/compliance/shared-responsibility-model/)
 
-![alt text](image-4.png)
+![alt text](./images/image-4.png)
