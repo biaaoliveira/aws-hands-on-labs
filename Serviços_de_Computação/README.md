@@ -1,3 +1,30 @@
+# AWS — Serviços de Computação
+
+## Domínio 3 — Tecnologia e Serviços de Nuvem
+
+Material de estudo para a certificação AWS Certified Cloud Practitioner (CLF-C02).
+
+Este domínio representa 34% da prova e aborda os principais serviços e tecnologias disponíveis na AWS.
+
+### Conteúdos abordados
+
+- Amazon EC2
+- Amazon EBS
+- EC2 Instance Store
+- Security Groups
+- Amazon Machine Image (AMI)
+- Elastic Load Balancing (ELB)
+- EC2 Auto Scaling
+- AWS Lambda
+- Contêineres e Docker
+- Amazon ECS
+- Amazon EKS
+- AWS Fargate
+- Amazon ECR
+
+
+![Guia_Geral](./images/Guia%20Visual%20AWS_%20EC2,%20Lambda%20e%20Contêineres.png)
+
 
 # Amazon EC2 — Elastic Compute Cloud
 
@@ -291,3 +318,268 @@ Serviço responsável por ajustar automaticamente a quantidade de instâncias EC
 - [Modelo de Responsabilidade Compartilhada](https://aws.amazon.com/compliance/shared-responsibility-model/)
 
 ![alt text](./images/image-4.png)
+
+
+---
+
+## 10. AWS Lambda — Computação Serverless
+
+O AWS Lambda é um serviço de computação que permite executar código sem precisar provisionar ou gerenciar servidores.
+
+É um serviço do modelo FaaS (Function as a Service).
+
+### Características
+
+- Não é necessário gerenciar servidores.
+- Escalabilidade automática.
+- Execução orientada a eventos (Event-driven).
+- Pagamento baseado nas solicitações e no tempo de execução, entre outros recursos utilizados.
+- Tempo máximo de execução de 15 minutos por invocação.
+- Integração com diversos serviços da AWS.
+
+### Exemplos de gatilhos (Triggers)
+
+- Upload de um arquivo no Amazon S3.
+- Requisição recebida pelo Amazon API Gateway.
+- Mensagem recebida no Amazon SQS.
+- Eventos do Amazon EventBridge.
+- Alterações capturadas pelo DynamoDB Streams.
+
+### Exemplo prático
+
+1. Um arquivo CSV é enviado para um bucket S3.
+2. O evento de criação do objeto aciona uma função Lambda.
+3. A função executa um código Python para processar os dados.
+4. O resultado é armazenado em outro bucket S3.
+
+### Quando utilizar?
+
+- Processamento de arquivos.
+- Automação de tarefas.
+- APIs serverless.
+- Processamento de eventos.
+- Processamentos de curta duração.
+
+> Analogia: o Lambda é como contratar um profissional apenas quando existe uma tarefa. Ele executa o trabalho e você paga pela execução, sem precisar mantê-lo disponível o tempo todo.
+
+### EC2 x Lambda
+
+| Característica | EC2 | Lambda |
+|---|---|---|
+| Gerenciamento de servidores | Cliente | AWS |
+| Sistema operacional | Gerenciado pelo cliente | Gerenciado pela AWS |
+| Escalabilidade | Configurável | Automática |
+| Tempo de execução | Sem limite fixo do serviço | Até 15 minutos por invocação |
+| Cobrança | Capacidade provisionada e utilizada | Solicitações e execução |
+| Modelo | IaaS | FaaS |
+| Indicação | Aplicações contínuas | Funções orientadas a eventos |
+
+---
+
+## 11. Contêineres
+
+Um contêiner é uma unidade que empacota uma aplicação e suas dependências, permitindo que ela seja executada de maneira consistente em diferentes ambientes.
+
+Os contêineres compartilham o kernel do sistema operacional do host, sem precisar incluir um sistema operacional completo para cada aplicação.
+
+### Benefícios
+
+- Portabilidade.
+- Padronização de ambientes.
+- Isolamento de aplicações.
+- Inicialização rápida.
+- Melhor aproveitamento dos recursos computacionais.
+- Facilidade de implantação.
+
+### Máquinas virtuais x Contêineres
+
+| Característica | Máquina virtual | Contêiner |
+|---|---|---|
+| Sistema operacional | Possui seu próprio SO | Compartilha o kernel do host |
+| Consumo de recursos | Geralmente maior | Geralmente menor |
+| Inicialização | Geralmente mais lenta | Geralmente mais rápida |
+| Isolamento | Virtualização de hardware | Isolamento de processos |
+| Portabilidade | Menor | Maior |
+
+> Analogia: uma máquina virtual é como uma casa independente. Um contêiner é como um apartamento que possui seu próprio espaço, mas compartilha a infraestrutura do prédio.
+
+---
+
+## 12. Docker
+
+Docker é uma plataforma utilizada para criar, distribuir e executar aplicações em contêineres.
+
+### Conceitos importantes
+
+- **Dockerfile:** arquivo com instruções para construir uma imagem.
+- **Docker Image:** modelo que contém a aplicação e suas dependências.
+- **Docker Container:** instância em execução de uma imagem.
+- **Docker Registry:** repositório utilizado para armazenar imagens.
+
+### Fluxo de funcionamento
+
+Dockerfile → Docker Image → Docker Container
+
+> A imagem é a receita pronta. O contêiner é a aplicação executada a partir dessa imagem.
+
+---
+
+## 13. Orquestração de contêineres
+
+A orquestração é o gerenciamento automatizado de contêineres.
+
+Permite:
+
+- Implantar contêineres.
+- Distribuir aplicações entre servidores.
+- Escalar aplicações.
+- Monitorar a integridade dos contêineres.
+- Substituir contêineres com falhas.
+- Gerenciar a comunicação entre aplicações.
+
+Na AWS, os principais serviços de orquestração são Amazon ECS e Amazon EKS.
+
+---
+
+## 14. Amazon ECS — Elastic Container Service
+
+Serviço gerenciado de orquestração de contêineres desenvolvido pela AWS.
+
+Permite executar, gerenciar e escalar aplicações em contêineres.
+
+### Opções de infraestrutura
+
+- **Amazon EC2:** os contêineres são executados em instâncias EC2 gerenciadas pelo cliente.
+- **AWS Fargate:** os contêineres são executados sem que o cliente precise gerenciar servidores.
+
+### Quando utilizar?
+
+- Aplicações em contêineres.
+- Arquiteturas de microsserviços.
+- Aplicações integradas ao ecossistema AWS.
+
+> ECS é o orquestrador nativo da AWS.
+
+---
+
+## 15. Amazon EKS — Elastic Kubernetes Service
+
+Serviço gerenciado que permite executar Kubernetes na AWS.
+
+Kubernetes é uma plataforma de código aberto utilizada para automatizar a implantação, o gerenciamento e a escalabilidade de aplicações em contêineres.
+
+O EKS gerencia o plano de controle do Kubernetes.
+
+As aplicações podem utilizar diferentes opções de infraestrutura, incluindo:
+
+- Amazon EC2.
+- AWS Fargate.
+
+### Quando utilizar?
+
+- Aplicações que já utilizam Kubernetes.
+- Arquiteturas de microsserviços.
+- Ambientes que precisam de portabilidade entre plataformas.
+
+> EKS é o serviço gerenciado de Kubernetes da AWS.
+
+### ECS x EKS
+
+| Característica | ECS | EKS |
+|---|---|---|
+| Orquestrador | Nativo da AWS | Kubernetes |
+| Complexidade | Geralmente menor | Geralmente maior |
+| Integração com AWS | Nativa | Nativa |
+| Infraestrutura | EC2 ou Fargate, entre outras opções | EC2 ou Fargate, entre outras opções |
+| Portabilidade do orquestrador | Menor | Maior |
+
+---
+
+## 16. AWS Fargate
+
+AWS Fargate é um mecanismo de computação serverless para contêineres.
+
+Permite executar contêineres sem precisar provisionar ou gerenciar instâncias EC2.
+
+### Características
+
+- Não exige gerenciamento de servidores.
+- Integração com Amazon ECS e Amazon EKS.
+- O cliente define os recursos necessários, como CPU e memória.
+- A AWS gerencia a infraestrutura subjacente.
+- Cobrança baseada nos recursos solicitados e no tempo de execução.
+
+### Atenção
+
+O Fargate não é um orquestrador de contêineres.
+
+- ECS e EKS: gerenciam e orquestram os contêineres.
+- Fargate: fornece a capacidade computacional para executá-los.
+
+> Analogia: ECS e EKS são os gerentes que organizam o trabalho. Fargate fornece a infraestrutura onde o trabalho acontece.
+
+---
+
+## 17. Amazon ECR — Elastic Container Registry
+
+Serviço gerenciado utilizado para armazenar, gerenciar e distribuir imagens de contêineres.
+
+### Características
+
+- Armazenamento de imagens de contêineres.
+- Repositórios públicos e privados.
+- Integração com ECS e EKS.
+- Controle de acesso por meio do IAM.
+- Suporte à verificação de vulnerabilidades nas imagens.
+
+### Exemplo de fluxo
+
+1. O desenvolvedor cria um Dockerfile.
+2. Uma imagem Docker é construída.
+3. A imagem é enviada ao Amazon ECR.
+4. O ECS ou EKS utiliza a imagem armazenada.
+5. O contêiner é executado utilizando EC2 ou Fargate.
+
+> ECR armazena imagens. ECS e EKS orquestram contêineres. EC2 e Fargate fornecem capacidade computacional.
+
+---
+
+## 18. Resumo dos serviços de computação
+
+| Serviço | Função principal |
+|---|---|
+| Amazon EC2 | Executar máquinas virtuais |
+| AWS Lambda | Executar funções sem gerenciar servidores |
+| Amazon ECS | Orquestrar contêineres com tecnologia nativa da AWS |
+| Amazon EKS | Executar Kubernetes gerenciado |
+| AWS Fargate | Executar contêineres sem gerenciar servidores |
+| Amazon ECR | Armazenar imagens de contêineres |
+| Amazon EBS | Armazenamento persistente em blocos |
+| Elastic Load Balancing | Distribuir tráfego |
+| EC2 Auto Scaling | Ajustar a quantidade de instâncias EC2 |
+
+---
+
+## 19. Pontos de atenção para a prova CLF-C02
+
+- Precisa de controle sobre o sistema operacional? Amazon EC2.
+- Precisa executar código em resposta a eventos? AWS Lambda.
+- Precisa orquestrar contêineres com tecnologia nativa da AWS? Amazon ECS.
+- Precisa utilizar Kubernetes? Amazon EKS.
+- Precisa executar contêineres sem gerenciar servidores? AWS Fargate.
+- Precisa armazenar imagens Docker? Amazon ECR.
+- Precisa distribuir tráfego entre servidores? Elastic Load Balancing.
+- Precisa ajustar automaticamente a quantidade de instâncias? EC2 Auto Scaling.
+
+---
+
+## Documentação oficial
+
+- [Amazon EC2](https://aws.amazon.com/ec2/)
+- [AWS Lambda](https://aws.amazon.com/lambda/)
+- [Amazon ECS](https://aws.amazon.com/ecs/)
+- [Amazon EKS](https://aws.amazon.com/eks/)
+- [AWS Fargate](https://aws.amazon.com/fargate/)
+- [Amazon ECR](https://aws.amazon.com/ecr/)
+
+![alt text](./images/image.png)
